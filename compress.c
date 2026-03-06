@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 
     int output_length = strlen(input_file) + strlen(extension);
     char output_fn[output_length];
-    snprintf(output_fn, output_length, "%s%s", input_file, extension);
+    snprintf(output_fn, output_length, "%s%s", GetFileNameWithoutExt(input_file), extension);
 
     FILE *fp_output = fopen(output_fn, "wb");
     if (fp_output == NULL)
