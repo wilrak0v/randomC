@@ -83,7 +83,7 @@ void compress_file(FILE *fp_output, size_t content_size, unsigned char *content)
     unsigned char *result = CompressData(content, content_size, &final_size);
 
     // Write the output file
-    if (fwrite(result, sizeof(char), content_size, fp_output) != content_size)
+    if (fwrite(result, sizeof(char), final_size, fp_output) != final_size)
         catch_errors();
     UnloadFileData(result);
 }
@@ -94,7 +94,7 @@ void decompress_file(FILE *fp_output, size_t content_size, unsigned char *conten
     unsigned char *result = DecompressData(content, content_size, &final_size);
 
     // Write the output file
-    if (fwrite(result, sizeof(char), content_size, fp_output) != content_size)
+    if (fwrite(result, sizeof(char), final_size, fp_output) != final_size)
         catch_errors();
     UnloadFileData(result);
 
